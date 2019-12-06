@@ -33,5 +33,9 @@ setopt appendhistory
 
 #https://gist.github.com/dergachev/4627207
 makegif() {
-  ffmpeg -i $1 -pix_fmt rgb24 -r 10 -f gif - | gifsicle --optimize=3 --delay=3 > $2
+  if [ -z "$3" ]; then
+    ffmpeg -i $1 -pix_fmt rgb24 -r 10 -f gif - | gifsicle --optimize=3 --delay=3 > $2
+  else
+    ffmpeg -i $1 -s $3 -pix_fmt rgb24 -r 10 -f gif - | gifsicle --optimize=3 --delay=3 > $2
+  fi
 }
