@@ -39,3 +39,11 @@ makegif() {
     ffmpeg -i $1 -s $3 -pix_fmt rgb24 -r 10 -f gif - | gifsicle --optimize=3 --delay=3 > $2
   fi
 }
+
+mov_to_mp4(){
+  ffmpeg -i "$1.mov" -vcodec h264 -acodec mp2 "$1.mp4"
+}
+
+mov_to_ig_mp4(){
+  ffmpeg -i "$1.mov" -c:a aac -r 30 -vcodec h264 "$1.mp4"
+}
