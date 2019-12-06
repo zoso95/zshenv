@@ -1,5 +1,6 @@
 alias DEBUG='echo loaded .zhsenv'
 alias PROFILE='echo .zhsenv'
+alias edit_profile='atom ~/.zshenv'
 
 export EDITOR=/usr/local/bin/atom
 export PATH="/usr/local/opt/python/libexec/bin:$PATH"
@@ -29,3 +30,8 @@ SAVEHIST=10000
 setopt appendhistory
 
 /usr/local/bin/fortune
+
+#https://gist.github.com/dergachev/4627207
+makegif() {
+  ffmpeg -i $1 -pix_fmt rgb24 -r 10 -f gif - | gifsicle --optimize=3 --delay=3 > $2
+}
